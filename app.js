@@ -105,7 +105,7 @@ app.get('/reply/:sender/:receiver/:subject/:body/:date/:time',function(req,res){
     });
 })
 app.get('/deleted/:email',function(req,res){
-    db.one('select * from Deleted where receiver = ${email} || sender = ${email};',{
+    db.one('select * from Deleted where receiver = ${email} or sender = ${email};',{
     email:req.params.email}).then(function(result){
     console.log(result);
     res.send(result);}).catch(function(error){
